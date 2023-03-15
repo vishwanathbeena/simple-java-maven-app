@@ -1,15 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-echo 'The following Maven command installs your Maven-built Java application'
-echo 'into the local Maven repository, which will ultimately be stored in'
-echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
-echo 'volume).'
+echo 'The following Maven command installs your Maven-built Java application'\n
+echo 'into the local Maven repository, which will ultimately be stored in'\n
+echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'\n
+echo 'volume).'\n
 # set -x
 mvn -Denforcer.skip=true jar:jar install:install help:evaluate -Dexpression=project.name
 # set +x
 
-echo 'The following complex command extracts the value of the <name/> element'
-echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
+echo 'The following complex command extracts the value of the <name/> element'\n
+echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'\n
 # set -x
 NAME=`mvn help:evaluate -Denforcer.skip=true -Dexpression=project.name | grep "^[^\[]"`
 # set +x
